@@ -1,0 +1,7 @@
+name: RussianRoulette
+main: main.java.com.texasgamer.russianroulette.RussianRoulette
+version: 1.0
+commands:
+    rr:
+        description: Press your luck
+        usage: /rr
