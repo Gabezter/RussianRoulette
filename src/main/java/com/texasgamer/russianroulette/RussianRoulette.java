@@ -20,6 +20,7 @@ public class RussianRoulette extends JavaPlugin{
 	
 	public void onEnable()
 	{
+		setupPermissions();
 		logger.info(getDescription().getName() + " " + getDescription().getVersion() + " enabled!");
 	}
 
@@ -36,11 +37,11 @@ public class RussianRoulette extends JavaPlugin{
 	      if (RussianRoulette.permissionHandler == null) {
 	          if (permissionsPlugin != null) {
 	              RussianRoulette.permissionHandler = ((Permissions) permissionsPlugin).getHandler();
+	              logger.info("RussianRoulette: Will use "+((Permissions)permissionsPlugin).getDescription().getFullName() + " for permissions.");
 	              usePermissions = true;
-	              logger.info("RussianRoulette: Permissions ENABLED");
 	          } else {
+	        	  logger.info("RussianRoulette: Permission system not detected, defaulting to ops");
 	              usePermissions = false;
-	              logger.info("RussianRoulette: Permissions not found, defaulting to ops.");
 	          }
 	      }
 	  }
