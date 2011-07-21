@@ -37,14 +37,30 @@ public class RussianRoulette extends JavaPlugin{
 	          if (permissionsPlugin != null) {
 	              RussianRoulette.permissionHandler = ((Permissions) permissionsPlugin).getHandler();
 	              usePermissions = true;
+	              logger.info("RussianRoulette: Permissions ENABLED");
 	          } else {
 	              usePermissions = false;
+	              logger.info("RussianRoulette: Permissions not found, defaulting to ops.");
 	          }
 	      }
 	  }
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
 	{
+		if(commandLabel.equalsIgnoreCase("roulette"))
+		{
+			sender.sendMessage(ChatColor.LIGHT_PURPLE + getDescription().getName() + " " + getDescription().getVersion());
+			sender.sendMessage(ChatColor.LIGHT_PURPLE + "http://www.texasgamer.co.cc");
+			if(usePermissions)
+			{
+				sender.sendMessage(ChatColor.LIGHT_PURPLE + "Permissions: " + ChatColor.GREEN + "Yes");
+			}
+			else
+			{
+				sender.sendMessage(ChatColor.LIGHT_PURPLE + "Permissions: " + ChatColor.RED + "No");
+			}
+		}
+		
 		if(commandLabel.equalsIgnoreCase("rr"))
 		{
 			if(usePermissions)
@@ -101,7 +117,7 @@ public class RussianRoulette extends JavaPlugin{
 				}
 				else
 				{
-					sender.sendMessage("You don't have permission!");
+					error("You don't have permission!",sender);
 				}
 			}
 		}
@@ -162,7 +178,7 @@ public class RussianRoulette extends JavaPlugin{
 				}
 				else
 				{
-					sender.sendMessage("You don't have permission!");
+					error("You don't have permission!",sender);
 				}
 			}
 		}
@@ -223,7 +239,7 @@ public class RussianRoulette extends JavaPlugin{
 				}
 				else
 				{
-					sender.sendMessage("You don't have permission!");
+					error("You don't have permission!",sender);
 				}
 			}
 		}

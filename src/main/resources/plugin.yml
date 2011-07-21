@@ -1,7 +1,16 @@
 name: RussianRoulette
 main: main.java.com.texasgamer.russianroulette.RussianRoulette
-version: 1.0
+version: 1.1
 commands:
     rr:
         description: Press your luck
         usage: /rr
+    moab:
+        description: Drop the mother of all bombs
+        usage: /moab
+    nuke:
+        description: Drop a nuke
+        usage: /nuke
+    roulette:
+        description: About the plugin
+        usage: /roulette
