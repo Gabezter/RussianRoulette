@@ -2,6 +2,9 @@ package main.java.com.texasgamer.russianroulette;
 
 import java.util.Random;
 import java.util.logging.Logger;
+
+import main.java.com.texasgamer.bedtime.Config;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -17,9 +20,11 @@ public class RussianRoulette extends JavaPlugin{
 	public static final Logger logger = Logger.getLogger("Minecraft.RussianRoulette");
 	static boolean usePermissions = false;
 	public static PermissionHandler permissionHandler;
+	Config config = new Config(this);
 	
 	public void onEnable()
 	{
+		config.configCheck();
 		setupPermissions();
 		logger.info(getDescription().getName() + " " + getDescription().getVersion() + " enabled!");
 	}
@@ -75,9 +80,10 @@ public class RussianRoulette extends JavaPlugin{
 					int numPlayers = sender.getServer().getOnlinePlayers().length;
 					Random chooser = new Random();
 					int whoToKick = chooser.nextInt(numPlayers);
+					Config.readDouble("time-to-idle");
 					
 					for (Player p : sender.getServer().getOnlinePlayers()) {
-						if(count == whoToKick)
+						if(count == whoToKick && RussianRoulette.permissionHandler.has((Player) sender, "roulette.safe"))
 						{
 							p.sendMessage(ChatColor.YELLOW + ((Player) sender).getDisplayName() + " hands you a gun...");
 							p.kickPlayer("You were killed!");
