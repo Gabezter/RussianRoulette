@@ -3,8 +3,6 @@ package main.java.com.texasgamer.russianroulette;
 import java.util.Random;
 import java.util.logging.Logger;
 
-import main.java.com.texasgamer.bedtime.Config;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -80,21 +78,36 @@ public class RussianRoulette extends JavaPlugin{
 					int numPlayers = sender.getServer().getOnlinePlayers().length;
 					Random chooser = new Random();
 					int whoToKick = chooser.nextInt(numPlayers);
-					Config.readDouble("time-to-idle");
 					
 					for (Player p : sender.getServer().getOnlinePlayers()) {
-						if(count == whoToKick && RussianRoulette.permissionHandler.has((Player) sender, "roulette.safe"))
+						boolean ignore = false;
+						
+						if(Config.readBoolean("ignore-ops") && p.isOp())
+						{
+							ignore = true;
+						}
+						if(Config.readBoolean("target-across-worlds") && ((Player) sender).getWorld() != p.getWorld())
+						{
+							ignore = true;
+						}
+						
+						
+						if(count == whoToKick && RussianRoulette.permissionHandler.has((Player) sender, "roulette.safe") && ignore == false)
 						{
 							p.sendMessage(ChatColor.YELLOW + ((Player) sender).getDisplayName() + " hands you a gun...");
 							p.kickPlayer("You were killed!");
 							count++;
+							ignore = false;
 						}
 						else
 						{
 							p.sendMessage(ChatColor.YELLOW + ((Player) sender).getDisplayName() + " hands you a gun...");
 							p.sendMessage(ChatColor.YELLOW + "*click*");
 							count++;
+							ignore = false;
 						}
+						
+						
 				    }
 				}
 			}
@@ -108,19 +121,29 @@ public class RussianRoulette extends JavaPlugin{
 					int whoToKick = chooser.nextInt(numPlayers);
 					
 					for (Player p : sender.getServer().getOnlinePlayers()) {
-				    	  if(count == whoToKick)
-				    	  {
-				    		  p.sendMessage(ChatColor.YELLOW + ((Player) sender).getDisplayName() + " hands you a gun...");
-				    		  p.kickPlayer("You were killed!");
-				    		  count++;
-				    	  }
-				    	  else
-				    	  {
-				    		  p.sendMessage(ChatColor.YELLOW + ((Player) sender).getDisplayName() + " hands you a gun...");
-				    		  p.sendMessage(ChatColor.GRAY + "*click*");
-				    		  count++;
-				    	  }
-					}
+						boolean ignore = false;
+						if(Config.readBoolean("ignore-ops") && p.isOp())
+						{
+							ignore = true;
+						}
+						
+						if(count == whoToKick && ignore == false)
+						{
+							p.sendMessage(ChatColor.YELLOW + ((Player) sender).getDisplayName() + " hands you a gun...");
+							p.kickPlayer("You were killed!");
+							count++;
+							ignore = false;
+						}
+						else
+						{
+							p.sendMessage(ChatColor.YELLOW + ((Player) sender).getDisplayName() + " hands you a gun...");
+							p.sendMessage(ChatColor.YELLOW + "*click*");
+							count++;
+							ignore = false;
+						}
+						
+						
+				    }
 				}
 				else
 				{
