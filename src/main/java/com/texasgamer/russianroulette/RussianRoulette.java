@@ -167,18 +167,34 @@ public class RussianRoulette extends JavaPlugin{
 					int whoToKick = chooser.nextInt(numPlayers);
 					
 					for (Player p : sender.getServer().getOnlinePlayers()) {
-						if(count == whoToKick)
+						boolean ignore = false;
+						
+						if(Config.readBoolean("ignore-ops") && p.isOp())
 						{
-							p.sendMessage(ChatColor.YELLOW + "As a large object appears, the sky darkens...");
+							ignore = true;
+						}
+						if(Config.readBoolean("target-across-worlds") && ((Player) sender).getWorld() != p.getWorld())
+						{
+							ignore = true;
+						}
+						
+						
+						if(count == whoToKick && RussianRoulette.permissionHandler.has((Player) sender, "roulette.safe") && ignore == false)
+						{
+							p.sendMessage(ChatColor.YELLOW + "The sky darkens...");
 							p.kickPlayer("You were killed!");
 							count++;
+							ignore = false;
 						}
 						else
 						{
-							p.sendMessage(ChatColor.YELLOW + "As a large object appears, the sky darkens...");
-							p.sendMessage(ChatColor.YELLOW + "It's a dud!");
+							p.sendMessage(ChatColor.YELLOW + "The sky darkens...");
+							p.sendMessage(ChatColor.YELLOW + "*click*");
 							count++;
+							ignore = false;
 						}
+						
+						
 				    }
 				}
 			}
@@ -192,19 +208,29 @@ public class RussianRoulette extends JavaPlugin{
 					int whoToKick = chooser.nextInt(numPlayers);
 					
 					for (Player p : sender.getServer().getOnlinePlayers()) {
-				    	  if(count == whoToKick)
-				    	  {
-				    		  p.sendMessage(ChatColor.YELLOW + "As a large object appears, the sky darkens...");
-				    		  p.kickPlayer("You were killed!");
-				    		  count++;
-				    	  }
-				    	  else
-				    	  {
-				    		  p.sendMessage(ChatColor.YELLOW + "As a large object appears, the sky darkens...");
-				    		  p.sendMessage(ChatColor.GRAY + "It's a dud!");
-				    		  count++;
-				    	  }
-					}
+						boolean ignore = false;
+						if(Config.readBoolean("ignore-ops") && p.isOp())
+						{
+							ignore = true;
+						}
+						
+						if(count == whoToKick && ignore == false)
+						{
+							p.sendMessage(ChatColor.YELLOW + "The sky darkens...");
+							p.kickPlayer("You were killed!");
+							count++;
+							ignore = false;
+						}
+						else
+						{
+							p.sendMessage(ChatColor.YELLOW + "The sky darkens...");
+							p.sendMessage(ChatColor.YELLOW + "*click*");
+							count++;
+							ignore = false;
+						}
+						
+						
+				    }
 				}
 				else
 				{
@@ -228,18 +254,34 @@ public class RussianRoulette extends JavaPlugin{
 					int whoToKick = chooser.nextInt(numPlayers);
 					
 					for (Player p : sender.getServer().getOnlinePlayers()) {
-						if(count == whoToKick)
+						boolean ignore = false;
+						
+						if(Config.readBoolean("ignore-ops") && p.isOp())
 						{
-							p.sendMessage(ChatColor.YELLOW + "As a large object appears, the sky darkens...");
+							ignore = true;
+						}
+						if(Config.readBoolean("target-across-worlds") && ((Player) sender).getWorld() != p.getWorld())
+						{
+							ignore = true;
+						}
+						
+						
+						if(count == whoToKick && RussianRoulette.permissionHandler.has((Player) sender, "roulette.safe") && ignore == false)
+						{
+							p.sendMessage(ChatColor.YELLOW + "The sky darkens...");
 							p.kickPlayer("You were killed!");
 							count++;
+							ignore = false;
 						}
 						else
 						{
-							p.sendMessage(ChatColor.YELLOW + "As a large object appears, the sky darkens...");
-							p.sendMessage(ChatColor.YELLOW + "It's a dud!");
+							p.sendMessage(ChatColor.YELLOW + "The sky darkens...");
+							p.sendMessage(ChatColor.YELLOW + "*click*");
 							count++;
+							ignore = false;
 						}
+						
+						
 				    }
 				}
 			}
@@ -253,19 +295,29 @@ public class RussianRoulette extends JavaPlugin{
 					int whoToKick = chooser.nextInt(numPlayers);
 					
 					for (Player p : sender.getServer().getOnlinePlayers()) {
-				    	  if(count == whoToKick)
-				    	  {
-				    		  p.sendMessage(ChatColor.YELLOW + "As a large object appears, the sky darkens...");
-				    		  p.kickPlayer("You were killed!");
-				    		  count++;
-				    	  }
-				    	  else
-				    	  {
-				    		  p.sendMessage(ChatColor.YELLOW + "As a large object appears, the sky darkens...");
-				    		  p.sendMessage(ChatColor.GRAY + "It's a dud!");
-				    		  count++;
-				    	  }
-					}
+						boolean ignore = false;
+						if(Config.readBoolean("ignore-ops") && p.isOp())
+						{
+							ignore = true;
+						}
+						
+						if(count == whoToKick && ignore == false)
+						{
+							p.sendMessage(ChatColor.YELLOW + "The sky darkens...");
+							p.kickPlayer("You were killed!");
+							count++;
+							ignore = false;
+						}
+						else
+						{
+							p.sendMessage(ChatColor.YELLOW + "The sky darkens...");
+							p.sendMessage(ChatColor.YELLOW + "*click*");
+							count++;
+							ignore = false;
+						}
+						
+						
+				    }
 				}
 				else
 				{
