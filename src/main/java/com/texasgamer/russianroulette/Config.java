@@ -15,7 +15,7 @@ public class Config
 		plugin = instance;
 	}
 
-	public static String directory = "plugins" + File.separator +"Bedtime";
+	public static String directory = "plugins" + File.separator +"RussianRoulette";
 	static File file = new File(directory + File.separator + "config.yml");
 	
 	public void configCheck(){

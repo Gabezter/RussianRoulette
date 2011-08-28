@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.texasgamer</groupId>
   <artifactId>russianroulette</artifactId>
-  <version>1.2</version>
+  <version>1.2-SNAPSHOT</version>
   <name>RussianRoulette</name>
   <repositories>
     <repository>
@@ -15,21 +15,13 @@
   </repositories>
 
   <dependencies> 
-    <!--  Permissions -->
-    <dependency>
-      <groupId>com.nijikokun.bukkit</groupId>
-      <artifactId>Permissions</artifactId>
-      <version>3.0.6</version>
-      <scope>system</scope>
-      <systemPath>${basedir}/Permissions.jar</systemPath>
-      <optional>true</optional>
-    </dependency>
-    <!--  Help -->
     <!-- Bukkit -->
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
       <version>0.0.1-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/bukkit-0.0.1-SNAPSHOT.jar</systemPath>
     </dependency>
   </dependencies>
 
