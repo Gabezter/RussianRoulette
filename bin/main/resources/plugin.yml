@@ -1,6 +1,6 @@
 name: RussianRoulette
 main: main.java.com.texasgamer.russianroulette.RussianRoulette
-version: 1.2
+version: 1.2.1-SNAPSHOT
 commands:
     rr:
         description: Press your luck
@@ -14,3 +14,22 @@ commands:
     roulette:
         description: About the plugin
         usage: /roulette
+permissions:
+    roulette.*:
+        description: Gives access to all commands (NOT roulette.safe!)
+        children:
+            roulette.rr: true
+            roulette.moab: true
+            roulette.nuke: true
+    roulette.rr:
+        description: Allows usage of /rr
+        default: false
+    roulette.moab:
+        description: Allows usage of /moab
+        default: false
+    roulette.nuke:
+        description: Allows usage of /nuke
+        default: false
+    roulette.safe:
+        description: Prevents the player from being kicked
+        default: false
