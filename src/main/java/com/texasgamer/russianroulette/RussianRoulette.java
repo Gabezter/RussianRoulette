@@ -1,4 +1,4 @@
-package main.java.com.texasgamer.russianroulette;
+package com.texasgamer.russianroulette;
 
 import java.util.Random;
 import java.util.logging.Logger;

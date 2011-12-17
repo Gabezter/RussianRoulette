@@ -1,4 +1,4 @@
-package main.java.com.texasgamer.russianroulette;
+package com.texasgamer.russianroulette;
 
 import java.io.File;
 import java.util.List;
