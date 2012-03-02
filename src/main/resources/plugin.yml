@@ -1,6 +1,6 @@
 name: RussianRoulette
 main: com.texasgamer.russianroulette.RussianRoulette
-version: 1.2.1-SNAPSHOT
+version: 1.3-SNAPSHOT
 commands:
     rr:
         description: Press your luck
